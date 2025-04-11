@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FurnitureShop - Products</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FurnitureShop Logo"
-                 style="width: auto; height: 80px;">
-            <h1>FurnitureShop</h1>
+        <div class="top-header">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FurnitureShop Logo">
+            </div>
         </div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/products">Products</a></li>
+                <li><a href="/"><i class="fas fa-home nav-icon"></i>Home</a></li>
+                <li><a href="/products" class="active"><i class="fas fa-couch nav-icon"></i>Products</a></li>
             </ul>
         </nav>
     </header>
@@ -27,7 +27,7 @@
         <h2>Our Furniture Collection</h2>
         <div class="search-container">
             <input type="text" id="search-bar" placeholder="Search for furniture by name...">
-            <button id="search-button">Search</button>
+            <button id="search-button"><i class="fas fa-search"></i> Search</button>
         </div>
 
         <div id="product-list">

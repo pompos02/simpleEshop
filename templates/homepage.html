@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FurnitureShop - Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FurnitureShop Logo"
-                 style="width: auto; height: 80px;">
-            <h1>FurnitureShop</h1>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FurnitureShop Logo">
         </div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/products">Products</a></li>
+                <li><a href="/" class="active"><i class="fas fa-home nav-icon"></i>Home</a></li>
+                <li><a href="/products"><i class="fas fa-couch nav-icon"></i>Products</a></li>
             </ul>
         </nav>
     </header>
