@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurnitureShop - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="FurnitureShop Logo"
+                 style="width: auto; height: 80px;">
+            <h1>FurnitureShop</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/products">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Popular Furniture</h2>
+        <div id="slideshow-container">
+            <div id="slideshow">
+                <p>Loading popular products...</p>
+            </div>
+        </div>
+
+        <section class="content">
+            <h2>Welcome to FurnitureShop</h2>
+            <p>Discover our curated collection of fine furniture. We offer high-quality, stylish pieces that complement any home. Browse our selection of sofas, chairs, tables, and more!</p>
+            <div class="cta-button">
+                <a href="/products"><button>Explore Collection</button></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FurnitureShop - Web Information Systems Project</p>
+        <p>Team Members: [Diddy], [Justine Bieber], [Jon Pork], [Theofilos Anagnostidis]</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/products.js') }}"></script>
+</body>
+</html>
