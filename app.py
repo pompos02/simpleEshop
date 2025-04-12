@@ -75,19 +75,14 @@ def search_products():
         if search_query:
             pipeline = [
                 {
-                    "$search": {
-                        "index": "default",  # The name of the Search index of Atlas
-                        "autocomplete": {
-                            "query": search_query,
-                            "path": "name",
-                            "fuzzy": {
-                                "maxEdits": 1
-                            }
+                    "$match": {
+                        "name": {
+                            "$regex": f"^{search_query}",
+                            "$options": "i"  # case-insensitive
                         }
                     }
                 },
                 {"$sort": {"price": -1}},
-
             ]
             products_cursor = eshop_collection.aggregate(pipeline)
         else:
