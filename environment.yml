@@ -1,5 +1,0 @@
-name: WIS25
-channels:
-  - https://repo.anaconda.com/pkgs/main
-  - https://repo.anaconda.com/pkgs/r
-prefix: /home/karavellas/miniconda3/envs/WIS25

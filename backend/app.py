@@ -13,8 +13,8 @@ import numpy as np # Included as required, though not directly used in core logi
 load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__,
-            static_folder='static',  # Folder for static files (CSS, JS, Images)
-            template_folder='templates')  # Folder for HTML templates
+            static_folder='web/static',  # Folder for static files (CSS, JS, Images)
+            template_folder='web/templates')  # Folder for HTML templates
 
 # Get the MongoDB Atlas connection string from the environment variable
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
@@ -130,7 +130,7 @@ def like_product():
             return jsonify({"error": "Product not found"}), 404
 
         if result.modified_count == 1:
-            # Fetch the updated document to return the new like count (optional)
+            # Fetch the updated document to return the new like count
             updated_product = eshop_collection.find_one({"_id": product_oid})
             return jsonify({
                 "message": "Like registered successfully",
@@ -172,6 +172,4 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     # Run in debug mode for development (auto-reloads changes)
     # Set debug=False for production
-    app.run(debug=True, port=port)
-
-
+    app.run(debug=True, host="0.0.0.0", port=port)

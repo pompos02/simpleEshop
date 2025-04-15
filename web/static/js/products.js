@@ -59,7 +59,7 @@ function loadPopularProducts() {
                     <div class="slide">
                         <img src="${product.image}" alt="${product.name}">
                         <h3>${product.name}</h3>
-                        <p class="price">€${product.price.toFixed(2)}</p>
+                        <p class="price">${product.price.toFixed(2)}€</p>
                         <p><i class="fas fa-heart" style="color: #FF8C00;"></i> ${product.likes || 0} likes</p>
                     </div>
                 `;
@@ -116,9 +116,9 @@ function loadProducts(searchTerm) {
                          data-product-id="${product._id}">
                     <h3>${product.name}</h3>
                     <p>${product.description || 'No description available'}</p>
-                    <p class="price">€${product.price.toFixed(2)}</p>
+                    <p class="price">${product.price.toFixed(2)}€</p>
                     <p class="likes">
-                        <i class="fas fa-heart like-icon"></i> <span class="like-count">${product.likes || 0}</span> likes
+                        <i class="fas fa-heart like-icon"></i> <span class="like-count">${product.likes || 'No likes found'}</span> likes
                     </p>
                 `;
 
