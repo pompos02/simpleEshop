@@ -57,13 +57,12 @@ def search_products():
             pipeline = [
                 {
                     "$match": {
-                        "name": {
-                            "$regex": f"^{search_query}",
-                            "$options": "i"  # case-insensitive
+                        "$text": {
+                            "$search": search_query  # full-text search
                         }
                     }
                 },
-                {"$sort": {"price": -1}},
+                {"$sort": {"price": -1}}
             ]
             products_cursor = eshop_collection.aggregate(pipeline)
         else:

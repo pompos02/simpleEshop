@@ -1,6 +1,6 @@
 db = db.getSiblingDB('Eshop');
 db.createCollection('products');
-db.products.createIndex({ name: 1 });
+db.products.createIndex({ name: "text" });
 
 db.products.insertMany([
   {
