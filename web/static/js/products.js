@@ -1,4 +1,3 @@
-// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Check if we're on the homepage with slideshow
     const slideshowEl = document.getElementById('slideshow');
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadProducts(searchTerm);
         });
 
-        // Allow search on Enter key
+        // Allow search by pressing Enter
         searchBar.addEventListener('keyup', function(event) {
             if (event.key === 'Enter') {
                 const searchTerm = searchBar.value.trim();
@@ -47,8 +46,6 @@ function loadPopularProducts() {
                 return;
             }
 
-            // Clear loading message
-            slideshowEl.innerHTML = '';
 
             // Create slideshow content
             let currentSlide = 0;
@@ -68,7 +65,7 @@ function loadPopularProducts() {
             // Show first slide
             showSlide(currentSlide);
 
-            // Set up automatic slideshow
+            // Automatic slideshow
             setInterval(() => {
                 currentSlide = (currentSlide + 1) % products.length;
                 showSlide(currentSlide);
@@ -80,15 +77,11 @@ function loadPopularProducts() {
         });
 }
 
-// Function to load products based on search term
+
 function loadProducts(searchTerm) {
     const productListEl = document.getElementById('product-list');
 
-    // Show loading indicator
-    productListEl.innerHTML = '<p>Loading products...</p>';
-
-    // Construct search URL
-    const searchUrl = searchTerm ? `/search?query=${encodeURIComponent(searchTerm)}` : '/search';
+    const searchUrl = searchTerm ? `/search?query=${searchTerm}` : '/search';
 
     // Fetch products from the API
     fetch(searchUrl)
@@ -112,7 +105,7 @@ function loadProducts(searchTerm) {
                 const productEl = document.createElement('div');
                 productEl.className = 'product-item';
                 productEl.innerHTML = `
-                    <img src="${product.image || '/static/images/placeholder.png'}" alt="${product.name}" 
+                    <img src="${product.image}" alt="${product.name}" 
                          data-product-id="${product._id}">
                     <h3>${product.name}</h3>
                     <p>${product.description || 'No description available'}</p>
@@ -137,7 +130,7 @@ function loadProducts(searchTerm) {
         });
 }
 
-// Function to like a product
+
 function likeProduct(productId, productEl) {
     fetch('/like', {
         method: 'POST',
@@ -158,7 +151,7 @@ function likeProduct(productId, productEl) {
         if (likeCountEl && data.new_likes) {
             likeCountEl.textContent = data.new_likes;
 
-            // Add a little animation for feedback
+            // animation for feedback
             productEl.querySelector('.like-icon').style.transform = 'scale(1.5)';
             setTimeout(() => {
                 productEl.querySelector('.like-icon').style.transform = 'scale(1)';
@@ -167,6 +160,5 @@ function likeProduct(productId, productEl) {
     })
     .catch(error => {
         console.error('Error liking product:', error);
-        alert('Could not like this product. Please try again later.');
     });
 }
