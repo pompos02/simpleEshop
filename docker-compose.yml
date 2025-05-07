@@ -18,13 +18,12 @@ services:
       - ./backend:/app
 
   mongodb:
-    image: mongo:latest
+    build: ./mongodb
     container_name: eshop-mongo
     ports:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
-      - ./mongodb:/docker-entrypoint-initdb.d
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
