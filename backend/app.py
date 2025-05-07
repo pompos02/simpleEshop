@@ -14,7 +14,7 @@ app = Flask(__name__,
 
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
-# Enable Cross-Origin Resource Sharing (CORS) for all domains on all routes
+# Enable Cross-Origin Resource Sharing (CORS) 
 CORS(app)
 
 try:
@@ -48,7 +48,7 @@ def products_page():
 @app.route('/search', methods=['GET'])
 def search_products():
     if eshop_collection is None:
-        return jsonify({"error": "Database connection failed"}), 500
+        return jsonify({"error": "Database connection failed"})
 
     search_query = request.args.get('query', '')
 
@@ -71,29 +71,29 @@ def search_products():
 
         products_list = [serialize_doc(product) for product in products_cursor]  # Convert cursor to list and serialize
 
-        return jsonify(products_list), 200
+        return jsonify(products_list)
 
     except Exception as er:
         print(f"Error during search: {er}")
-        return jsonify({"error": "An error occurred during search"}), 500
+        return jsonify({"error": "An error occurred during search"})
 
 
 @app.route('/like', methods=['POST'])
 def like_product():
     if eshop_collection is  None:
-        return jsonify({"error": "Database connection failed"}), 500
+        return jsonify({"error": "Database connection failed"})
 
     try:
         data = request.get_json()
         if not data or 'product_id' not in data:
-            return jsonify({"error": "Missing 'product_id' in request body"}), 400
+            return jsonify({"error": "Missing 'product_id' in request body"})
 
         product_id_str = data['product_id']
 
         try:
             product_oid = ObjectId(product_id_str)  # convert string id to ObjectId
         except Exception:
-            return jsonify({"error": "Invalid product ID format"}), 400
+            return jsonify({"error": "Invalid product ID format"})
 
         # Find the product and increment its likes count by 1
         result = eshop_collection.update_one(
@@ -108,18 +108,18 @@ def like_product():
             return jsonify({
                 "product_id": product_id_str,
                 "new_likes": updated_product.get('likes', 'N/A')
-            }), 200
+            })
 
 
     except Exception as er:
         print(f"Error liking product: {er}")
-        return jsonify({"error": "An error occurred while liking the product"}), 500
+        return jsonify({"error": "An error occurred while liking the product"})
 
 
 @app.route('/popular-products', methods=['GET'])
 def get_popular_products():
     if eshop_collection is None:
-        return jsonify({"error": "Database connection failed"}), 500
+        return jsonify({"error": "Database connection failed"})
 
     try:
         # Find the top 5 products, sorted by likes descending
@@ -128,11 +128,11 @@ def get_popular_products():
         # Convert cursor to list and serialize
         popular_products_list = [serialize_doc(product) for product in popular_products_cursor]
 
-        return jsonify(popular_products_list), 200
+        return jsonify(popular_products_list)
 
     except Exception as er:
         print(f"Error fetching popular products: {er}")
-        return jsonify({"error": "An error occurred fetching popular products"}), 500
+        return jsonify({"error": "An error occurred fetching popular products"})
 
 
 if __name__ == '__main__':

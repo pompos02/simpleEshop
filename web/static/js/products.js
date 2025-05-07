@@ -45,8 +45,6 @@ function loadPopularProducts() {
                 slideshowEl.innerHTML = '<p>No popular products found.</p>';
                 return;
             }
-
-
             // Create slideshow content
             let currentSlide = 0;
             const showSlide = (index) => {

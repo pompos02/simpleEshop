@@ -18,7 +18,7 @@ main {
     width: 90%;
 }
 
-/* Modified Header & Navigation */
+
 header {
     background-color: #000;
     color: #fff;
@@ -27,13 +27,13 @@ header {
     position: relative;
 }
 
-/* Remove the top-header class and border separation */
+
 .logo-container {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the logo */
+    justify-content: center;
     padding: 15px 0;
-    margin: 0 auto; /* Center the container */
+    margin: 0 auto; 
 }
 
 .logo-container img {
@@ -55,7 +55,6 @@ header {
     letter-spacing: 1px;
 }
 
-/* Beautiful Navigation Styling */
 nav {
     width: 100%;
     background-color: #000;
@@ -104,7 +103,6 @@ nav a {
     gap: 5px;
 }
 
-/* Beautiful hover effect with underline animation */
 nav a::after {
     content: '';
     position: absolute;
@@ -126,7 +124,6 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* Active state for current page */
 nav a.active {
     color: #FF8C00;
     font-weight: 600;
@@ -137,14 +134,12 @@ nav a.active::after {
     left: 0;
 }
 
-/* Adding icons to nav items */
 nav a .nav-icon {
     display: inline-block;
     margin-right: 5px;
     font-size: 1.2em;
 }
 
-/* Footer */
 footer {
     background-color: #e0e0e0;
     color: #555;
@@ -158,7 +153,6 @@ footer p {
     margin: 5px 0;
 }
 
-/* Slideshow (Homepage) */
 #slideshow-container {
     margin: 20px 0;
     position: relative;
@@ -186,7 +180,6 @@ footer p {
     color: #777;
 }
 
-/* Search Bar (Products Page) */
 .search-container {
     margin: 20px 0;
     text-align: center;
@@ -212,7 +205,7 @@ footer p {
 
 #search-button {
     padding: 12px 20px;
-    background-color: #FF8C00; /* Orange accent */
+    background-color: #FF8C00; 
     color: white;
     border: none;
     border-radius: 25px;
@@ -223,10 +216,9 @@ footer p {
 }
 
 #search-button:hover {
-    background-color: #FF6D00; /* Darker orange on hover */
+    background-color: #FF6D00; 
 }
 
-/* Product List (Products Page) */
 #product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -273,7 +265,7 @@ footer p {
 
 .product-item .price {
     font-weight: bold;
-    color: #FF8C00; /* Orange accent */
+    color: #FF8C00; 
     font-size: 1.1em;
     margin: 8px 0;
 }
@@ -284,19 +276,19 @@ footer p {
 }
 
 .product-item .like-icon {
-    color: #FF8C00; /* Orange accent */
+    color: #FF8C00; 
     margin-left: 5px;
 }
 
-/* Headings */
+
 h2 {
     color: #333;
-    border-bottom: 2px solid #FF8C00; /* Orange accent */
+    border-bottom: 2px solid #FF8C00;
     padding-bottom: 8px;
     display: inline-block;
 }
 
-/* Sections */
+
 .content {
     text-align: center;
     background-color: #fff;
@@ -314,9 +306,8 @@ h2 {
     margin-bottom: 1rem;
   }
 
-/* Button styles */
 button {
-    background-color: #FF8C00; /* Orange accent */
+    background-color: #FF8C00; 
     color: white;
     border: none;
     padding: 8px 15px;
@@ -326,7 +317,7 @@ button {
 }
 
 button:hover {
-    background-color: #FF6D00; /* Darker orange on hover */
+    background-color: #FF6D00; 
 }
 
 .contact-info {

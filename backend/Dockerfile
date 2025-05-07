@@ -1,17 +1,17 @@
 FROM python:3.10-slim
 
-# Copy requirements.txt from the root of the build context
+# Copy requirements.txt from the root 
 COPY requirements.txt /requirements.txt
 
-# Εγκατάσταση requirements
+# install the requirements
 RUN pip install --no-cache-dir -r /requirements.txt
 
-# Αντιγραφή των αρχείων του backend (όλα όσα είναι στο ίδιο επίπεδο με το Dockerfile)
+# copy all the backend files
 COPY backend/ .
 
-# Αντιγραφή των φακέλων του web
+# copy the web files
 COPY web/templates ./web/templates
 COPY web/static ./web/static
 
-# Εκκίνηση Flask app
+# start the app
 CMD ["python", "app.py"]
