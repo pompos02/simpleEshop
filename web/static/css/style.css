@@ -298,12 +298,21 @@ h2 {
 
 /* Sections */
 .content {
+    text-align: center;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     margin: 20px 0;
 }
+
+.content h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    display: inline-block;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+  }
 
 /* Button styles */
 button {
@@ -320,3 +329,49 @@ button:hover {
     background-color: #FF6D00; /* Darker orange on hover */
 }
 
+.contact-info {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  .contact-wrapper {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .contact-heading {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding-bottom: 0.25rem;
+  }
+  .contact-map {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .contact-map:hover {
+    transform: scale(1.02);
+  }
+  
+  .contact-method {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  .contact-method i {
+    margin-right: 0.5rem;
+    color: #555;
+  }
+  .contact-method a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+  .contact-method a:hover {
+    text-decoration: underline;
+  }
+  
