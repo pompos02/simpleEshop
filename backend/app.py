@@ -14,7 +14,7 @@ app = Flask(__name__,
 
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
-# Enable Cross-Origin Resource Sharing (CORS) 
+
 CORS(app)
 
 try:
