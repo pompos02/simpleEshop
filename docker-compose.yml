@@ -1,27 +1,23 @@
 services:
-  web:
-    build: ./web
-    ports:
-      - "8080:80"
-
   backend:
     build:
       context: .
       dockerfile: backend/Dockerfile
     ports:
-      - "5000:5000"
+      - "5001:5000"
     depends_on:
       - mongodb
     environment:
       - MONGO_URI=${MONGO_URI}
     volumes:
       - ./backend:/app
+      - ./web:/app/web
 
   mongodb:
     build: ./mongodb
     container_name: eshop-mongo
     ports:
-      - "27017:27017"
+      - "27018:27017"
     volumes:
       - mongo_data:/data/db
     environment:

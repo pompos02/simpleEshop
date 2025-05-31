@@ -137,8 +137,73 @@ Static pages aren't interactive. We used JavaScript to connect the frontend UI t
         * **POST Request:** It calls `likeProduct`, which uses `fetch` to send a `POST` request to `/like`, including the `product_id` in the JSON body.
         * **UI Update:** When the backend confirms the like (sending back the `new_likes`), the JavaScript finds the corresponding `.like-count` span on the page and updates its text content, providing instant feedback.
 
-## 6. Conclusion
+## 6. Docker Setup
 
-Through these phases, we successfully built the FurnitureShop application. This involved setting up a Flask backend, connecting to a MongoDB Atlas database, creating a RESTful API, structuring the HTML frontend, styling with CSS, and implementing dynamic user interactions with JavaScript's `fetch` API and DOM manipulation. The project serves as a practical demonstration of integrating these common web technologies.
+The application is containerized using Docker, making it easy to deploy and run in any environment. The Docker setup consists of two main services:
+
+### Docker Architecture
+
+The application uses Docker Compose to orchestrate two services:
+
+1. **Backend Service**: A Flask application that serves both the API and the web interface
+2. **MongoDB Service**: A MongoDB database that stores the product data
+
+### Service Details
+
+#### Backend Service
+- **Base Image**: Python 3.10 slim
+- **Exposed Port**: 5000
+- **Dependencies**: Requires the MongoDB service to be running
+- **Volumes**:
+  - `./backend:/app`: Mounts the backend directory to the container for development
+  - `./web:/app/web`: Mounts the web directory to the container for serving static files and templates
+- **Environment Variables**:
+  - `MONGO_URI`: Connection string for MongoDB
+
+#### MongoDB Service
+- **Base Image**: Latest MongoDB image
+- **Exposed Port**: 27017
+- **Volumes**:
+  - `mongo_data:/data/db`: Persistent volume for database data
+- **Environment Variables**:
+  - `MONGO_INITDB_ROOT_USERNAME`: Root username for MongoDB
+  - `MONGO_INITDB_ROOT_PASSWORD`: Root password for MongoDB
+- **Initialization**: Uses the `init.js` script to create the database, collections, and insert sample data
+
+### Running the Application with Docker
+
+1. **Prerequisites**:
+   - Docker and Docker Compose installed on your system
+   - `.env` file with the required environment variables:
+     ```
+     MONGO_URI=mongodb://admin:adminpassword@mongodb:27017/Eshop?authSource=admin
+     MONGO_ROOT_USER=admin
+     MONGO_ROOT_PASSWORD=adminpassword
+     ```
+
+2. **Build and Start the Containers**:
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Access the Application**:
+   - Web Interface: http://localhost:5000
+   - API Endpoints:
+     - GET http://localhost:5000/popular-products
+     - GET http://localhost:5000/search?query=your_search_term
+     - POST http://localhost:5000/like (with JSON body: `{"product_id": "..."}`)
+
+4. **Stop the Containers**:
+   ```bash
+   docker-compose down
+   ```
+
+### Development with Docker
+
+For development purposes, the Docker setup includes volume mounts that allow you to make changes to the code without rebuilding the containers. When you modify files in the `backend` or `web` directories, the changes will be reflected in the running application.
+
+## 7. Conclusion
+
+Through these phases, we successfully built the FurnitureShop application. This involved setting up a Flask backend, connecting to a MongoDB database, creating a RESTful API, structuring the HTML frontend, styling with CSS, and implementing dynamic user interactions with JavaScript's `fetch` API and DOM manipulation. The project serves as a practical demonstration of integrating these common web technologies and containerizing the application with Docker.
 
 ---
